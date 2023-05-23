@@ -1,1 +1,3 @@
-json.partial! "municipes/municipe", municipe: @municipe
+# frozen_string_literal: true
+
+json.partial! 'municipes/municipe', municipe: @municipe

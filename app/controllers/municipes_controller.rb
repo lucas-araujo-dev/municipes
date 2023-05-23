@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class MunicipesController < ApplicationController
-  before_action :set_municipe, only: %i[ edit update ]
+  before_action :set_municipe, only: %i[edit update]
 
   # GET /municipes or /municipes.json
   def index
@@ -12,8 +14,7 @@ class MunicipesController < ApplicationController
   end
 
   # GET /municipes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /municipes or /municipes.json
   def create
@@ -21,7 +22,7 @@ class MunicipesController < ApplicationController
 
     respond_to do |format|
       if @municipe.save
-        format.html { redirect_to municipe_url(@municipe), notice: "Municipe was successfully created." }
+        format.html { redirect_to municipe_url(@municipe), notice: 'Municipe was successfully created.' }
         format.json { render :show, status: :created, location: @municipe }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -34,7 +35,7 @@ class MunicipesController < ApplicationController
   def update
     respond_to do |format|
       if @municipe.update(municipe_params)
-        format.html { redirect_to municipe_url(@municipe), notice: "Municipe was successfully updated." }
+        format.html { redirect_to municipe_url(@municipe), notice: 'Municipe was successfully updated.' }
         format.json { render :show, status: :ok, location: @municipe }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -44,13 +45,14 @@ class MunicipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_municipe
-      @municipe = Municipe.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def municipe_params
-      params.require(:municipe).permit(:full_name, :cpf, :cns, :email, :birthdate, :phone, :picture, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_municipe
+    @municipe = Municipe.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def municipe_params
+    params.require(:municipe).permit(:full_name, :cpf, :cns, :email, :birthdate, :phone, :picture, :status)
+  end
 end
