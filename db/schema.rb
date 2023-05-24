@@ -43,14 +43,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_212623) do
   end
 
   create_table "municipes", force: :cascade do |t|
-    t.string "full_name"
-    t.string "cpf"
-    t.string "cns"
-    t.string "email"
-    t.date "birthdate"
-    t.string "phone"
+    t.string "full_name", null: false
+    t.string "cpf", null: false
+    t.string "cns", null: false
+    t.string "email", null: false
+    t.date "birthdate", null: false
+    t.string "phone", null: false
     t.string "picture"
-    t.string "status"
+    t.string "status", default: "active", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cns"], name: "index_municipes_on_cns", unique: true
