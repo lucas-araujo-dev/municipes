@@ -11,7 +11,7 @@ FactoryBot.define do
     birthdate { Faker::Date.birthday(min_age: 18, max_age: 65) }
     phone { Faker::PhoneNumber.cell_phone }
     picture do
-      Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'files', 'avatar.jpg'))
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/avatar.jpg'))
     end
   end
 end
