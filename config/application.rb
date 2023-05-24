@@ -25,8 +25,6 @@ module Municipes
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    config.active_job.queue_adapter = :sidekiq
-
     # Timezone and locale configuration
     config.time_zone = 'Brasilia'
     config.i18n.default_locale = 'pt-BR'
