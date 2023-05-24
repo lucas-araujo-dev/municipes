@@ -12,7 +12,7 @@ FactoryBot.define do
     phone { Faker::PhoneNumber.cell_phone }
 
     after(:build) do |municipe|
-      municipe.picture.attach(io: File.open(Rails.root.join('spec/fixtures/files/avatar.jpg')), filename: 'avatar.png')
+      municipe.picture.attach(io: Rails.root.join('spec/fixtures/files/avatar.jpg').open, filename: 'avatar.png')
     end
   end
 end

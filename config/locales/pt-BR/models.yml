@@ -13,5 +13,9 @@ pt-BR:
         full_name: 'Nome Completo'
         phone: 'Telefone'
         picture: 'Foto'
-        Status: 'Status'
+        status: 'Status'
+    municipe:
+      status:
+        active: 'Ativo'
+        inactive: 'Inativo'
 

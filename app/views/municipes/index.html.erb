@@ -4,8 +4,8 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Municipes</h1>
-    <%= link_to 'New municipe', new_municipe_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl"><%= Municipe.name.pluralize %></h1>
+    <%= link_to t('actions.create', model: Municipe.model_name.human), new_municipe_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div id="municipes" class="min-w-full">
@@ -42,7 +42,7 @@
           <td class="px-6 py-4"><%= municipe.status %></td>
           <td class="px-6 py-4">
             <% if action_name != "show" %>
-              <%= link_to 'Editar', edit_municipe_path(municipe), class: "rounded-lg py-2 px-4 ml-2 bg-gray-100 inline-block font-medium" %>
+              <%= link_to t('helpers.subtitles.edit'), edit_municipe_path(municipe), class: "rounded-lg py-2 px-4 ml-2 bg-gray-100 inline-block font-medium" %>
             <% end %>
           </td>
         </tr>
