@@ -10,9 +10,8 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     birthdate { Faker::Date.birthday(min_age: 18, max_age: 65) }
     phone { Faker::PhoneNumber.cell_phone }
-
-    after(:build) do |municipe|
-      municipe.picture.attach(io: Rails.root.join('spec/fixtures/files/avatar.jpg').open, filename: 'avatar.png')
+    picture do
+      Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'files', 'avatar.jpg'))
     end
   end
 end

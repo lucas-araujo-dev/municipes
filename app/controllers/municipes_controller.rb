@@ -18,11 +18,9 @@ class MunicipesController < ApplicationController
 
     respond_to do |format|
       if @municipe.save
-        format.html { redirect_to municipes_url(@municipe), notice: :created }
-        format.json head :created
+        format.html { redirect_to municipes_url, notice: :created }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @municipe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -30,11 +28,9 @@ class MunicipesController < ApplicationController
   def update
     respond_to do |format|
       if @municipe.update(municipe_params)
-        format.html { redirect_to municipe_url(@municipe), notice: :updated }
-        format.json { render :show, status: :ok, location: @municipe }
+        format.html { redirect_to municipes_url, notice: :updated }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @municipe.errors, status: :unprocessable_entity }
       end
     end
   end
