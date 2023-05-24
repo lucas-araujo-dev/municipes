@@ -51,5 +51,8 @@ jobs:
           bundle exec rails db:create
           bundle exec rails db:migrate
 
+      - name: Start redis
+        run: redis-server
+
       - name: Run tests
         run: bundle exec rspec spec
