@@ -1,0 +1,21 @@
+pt-BR:
+  activerecord:
+    models:
+      municipe:
+        one: 'Municipe'
+        other: 'Municipes'
+    attributes:
+      municipe:
+        birthdate: 'Data de Nascimento'
+        cns: 'CNS'
+        cpf: 'CPF'
+        email: 'E-mail'
+        full_name: 'Nome Completo'
+        phone: 'Telefone'
+        picture: 'Foto'
+        status: 'Status'
+    municipe:
+      status:
+        active: 'Ativo'
+        inactive: 'Inativo'
+

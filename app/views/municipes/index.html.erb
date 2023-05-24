@@ -1,0 +1,53 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl"><%= Municipe.name.pluralize %></h1>
+    <%= link_to t('actions.create', model: Municipe.model_name.human), new_municipe_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <div id="municipes" class="min-w-full">
+    <table class="min-w-full table-auto">
+      <thead>
+      <tr>
+        <th class="px-6 py-3 bg-gray-100 text-center font-medium"><%= Municipe.human_attribute_name :picture %></th>
+        <th class="px-6 py-3 bg-gray-100 text-center font-medium"><%= Municipe.human_attribute_name :full_name %></th>
+        <th class="px-6 py-3 bg-gray-100 text-center font-medium"><%= Municipe.human_attribute_name :cpf %></th>
+        <th class="px-6 py-3 bg-gray-100 text-center font-medium"><%= Municipe.human_attribute_name :cns %></th>
+        <th class="px-6 py-3 bg-gray-100 text-center font-medium"><%= Municipe.human_attribute_name :birthdate %></th>
+        <th class="px-6 py-3 bg-gray-100 text-center font-medium"><%= Municipe.human_attribute_name :email %></th>
+        <th class="px-6 py-3 bg-gray-100 text-center font-medium"><%= Municipe.human_attribute_name :phone %></th>
+        <th class="px-6 py-3 bg-gray-100 text-center font-medium"><%= Municipe.human_attribute_name :status %></th>
+        <th class="px-6 py-3 bg-gray-100"><%= I18n.t('helpers.subtitles.action') %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @municipes.each do |municipe| %>
+        <tr id="<%= dom_id municipe %>" style="text-align: center">
+          <td class="px-6 py-4">
+            <% if municipe.picture.present? %>
+              <%= image_tag municipe.picture.url, class: "rounded-full", style: "max-width: 100px; max-height: 100px;" %>
+            <% else %>
+              <%= image_tag "default_picture.jpg", class: "rounded-full", style: "max-width: 100px; max-height: 100px;" %>
+            <% end %>
+          </td>
+          <td class="px-6 py-4"><%= municipe.full_name %></td>
+          <td class="px-6 py-4"><%= municipe.cpf %></td>
+          <td class="px-6 py-4"><%= municipe.cns %></td>
+          <td class="px-6 py-4"><%= l municipe.birthdate %></td>
+          <td class="px-6 py-4"><%= municipe.email %></td>
+          <td class="px-6 py-4"><%= municipe.phone %></td>
+          <td class="px-6 py-4"><%= municipe.status %></td>
+          <td class="px-6 py-4">
+            <% if action_name != "show" %>
+              <%= link_to t('helpers.subtitles.edit'), edit_municipe_path(municipe), class: "rounded-lg py-2 px-4 ml-2 bg-gray-100 inline-block font-medium" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
