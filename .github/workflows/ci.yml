@@ -22,7 +22,7 @@ jobs:
       postgres:
         image: postgres:14-alpine
         env:
-          POSTGRES_DB: securities_app_test
+          POSTGRES_DB: municipes_test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         ports:
