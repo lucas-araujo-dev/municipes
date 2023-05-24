@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Municipe < ApplicationRecord
-  enum status: { ativo: 0, inativo: 1 }
+  enum status: { active: 'active', inactive: 'inactive' }
 
   has_one_attached :picture
 
