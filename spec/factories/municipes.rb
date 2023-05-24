@@ -2,7 +2,6 @@
 
 require 'cns_brazil/generator'
 
-
 FactoryBot.define do
   factory :municipe do
     full_name { Faker::Name.name }
@@ -11,7 +10,9 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     birthdate { Faker::Date.birthday(min_age: 18, max_age: 65) }
     phone { Faker::PhoneNumber.cell_phone }
-    picture { Faker::Avatar.image }
-    status { true }
+
+    after(:build) do |municipe|
+      municipe.picture.attach(io: File.open(Rails.root.join('spec/fixtures/files/avatar.jpg')), filename: 'avatar.png')
+    end
   end
 end
