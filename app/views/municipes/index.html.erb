@@ -3,12 +3,24 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl"><%= Municipe.name.pluralize %></h1>
+  <div class="flex justify-between items-center my-5">
+    <%= link_to municipes_path do %>
+      <h1 class="font-bold text-4xl"><%= Municipe.name.pluralize %></h1>
+    <% end %>
+
+    <%= form_with url: municipes_path, method: :get, local: true, class: "mt-8" do |form| %>
+      <div class="flex justify-between">
+        <%= form.text_field :search, value: params[:search], class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 mr-2" %>
+        <%= form.submit t('helpers.subtitles.search'), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium ml-2" %>
+      </div>
+    <% end %>
+
+
     <%= link_to t('actions.create', model: Municipe.model_name.human), new_municipe_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div id="municipes" class="min-w-full">
+
     <table class="min-w-full table-auto">
       <thead>
       <tr>
@@ -39,7 +51,7 @@
           <td class="px-6 py-4"><%= l municipe.birthdate %></td>
           <td class="px-6 py-4"><%= municipe.email %></td>
           <td class="px-6 py-4"><%= municipe.phone %></td>
-          <td class="px-6 py-4"><%= municipe.status %></td>
+          <td class="px-6 py-4"><%= t("activerecord.municipe.status.#{municipe.status}") %></td>
           <td class="px-6 py-4">
             <% if action_name != "show" %>
               <%= link_to t('helpers.subtitles.edit'), edit_municipe_path(municipe), class: "rounded-lg py-2 px-4 ml-2 bg-gray-100 inline-block font-medium" %>
