@@ -1,10 +1,21 @@
 pt-BR:
   activerecord:
     models:
+      address:
+        one: 'Endereço'
+        other: 'Endereços'
       municipe:
         one: 'Municipe'
         other: 'Municipes'
     attributes:
+      address:
+        city: 'Cidade'
+        complement: 'Complemento'
+        district: 'Bairro'
+        state: 'Estado'
+        street: 'Logradouro'
+        zipcode: 'CEP'
+        ibge_code: 'Código IBGE'
       municipe:
         birthdate: 'Data de Nascimento'
         cns: 'CNS'
