@@ -4,7 +4,11 @@ class MunicipesController < ApplicationController
   before_action :set_municipe, only: %i[edit update]
 
   def index
-    @municipes = Municipe.all
+    @municipes = if params[:search].present?
+                   Municipe.search(params[:search]).records
+                 else
+                   Municipe.all
+                 end
   end
 
   def new

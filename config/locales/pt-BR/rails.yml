@@ -156,6 +156,7 @@ pt-BR:
       action: 'Ação'
       edit: 'Editar'
       back: 'Voltar'
+      search: 'Buscar'
   number:
     currency:
       format:
