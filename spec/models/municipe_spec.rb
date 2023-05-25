@@ -29,4 +29,10 @@ RSpec.describe Municipe, type: :model do
       expect(municipe).not_to be_valid
     end
   end
+
+  describe 'associations' do
+    it { is_expected.to have_one(:address).dependent(:destroy).inverse_of(:municipe) }
+    it { is_expected.to accept_nested_attributes_for(:address) }
+    it { is_expected.to have_one_attached(:picture) }
+  end
 end

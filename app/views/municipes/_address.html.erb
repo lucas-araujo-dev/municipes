@@ -1,0 +1,47 @@
+<h1 class="text-2xl font-bold text-gray-700">Endereço</h1>
+<div id="address" data-controller="municipe-form">
+  <div class="my-5">
+    <div class="flex justify-between">
+      <div class="w-1/4">
+        <%= form.label :zipcode %>
+        <%= form.text_field :zipcode, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",
+                            data: { action: "keyup->municipe-form#onZipCodeChange" } %>
+      </div>
+
+      <div class="w-full">
+        <%= form.label :street %>
+        <%= form.text_field :street, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",
+                            data: { target: "municipe-form.street" } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :complement %>
+    <%= form.text_field :complement, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <div class="flex justify-between">
+      <div class="w-1/4">
+        <%= form.label :neighborhood %>
+        <%= form.text_field :neighborhood, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", data: { target: "municipe-form.neighborhood" } %>
+      </div>
+
+      <div class="w-1/4 px-2">
+        <%= form.label :city %>
+        <%= form.text_field :city, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", data: { target: "municipe-form.city" } %>
+      </div>
+
+      <div class="w-1/4 px-2">
+        <%= form.label :uf %>
+        <%= form.text_field :uf, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", data: { target: "municipe-form.uf" } %>
+      </div>
+
+      <div class="w-1/4 px-2">
+        <%= form.label :ibge_code %>
+        <%= form.text_field :ibge_code, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      </div>
+    </div>
+  </div>
+</div>
