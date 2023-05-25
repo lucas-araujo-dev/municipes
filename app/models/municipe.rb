@@ -3,7 +3,11 @@
 class Municipe < ApplicationRecord
   enum status: { active: 'active', inactive: 'inactive' }
 
+  has_one :address, dependent: :destroy, inverse_of: :municipe
+
   has_one_attached :picture
+
+  accepts_nested_attributes_for :address, allow_destroy: true, reject_if: :all_blank
 
   validates :full_name, :cpf, :cns, :email, :birthdate, :phone, :picture, presence: true
   validates :cpf, :cns, :email, uniqueness: { case_sensitive: false }
