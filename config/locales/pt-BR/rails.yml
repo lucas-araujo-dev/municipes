@@ -163,6 +163,10 @@ pt-BR:
       updated: 'Cadastro Atualizado com Sucesso'
       link: 'Clique no link abaixo para vizualizar suas informações'
       button: 'Visualizar'
+  sms:
+    messages:
+      welcome: 'Olá %{name}, bem-vindo ao nosso aplicativo'
+      updated: 'Olá %{name}, seus dados foram atualizados com sucesso'
   number:
     currency:
       format:
