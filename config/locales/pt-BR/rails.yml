@@ -156,6 +156,13 @@ pt-BR:
       action: 'Ação'
       edit: 'Editar'
       back: 'Voltar'
+  mailers:
+    municipe_mailer:
+      welcome_message: 'Bem-vindo ao nosso aplicativo'
+      created: 'Cadastro Realizado com Sucesso'
+      updated: 'Cadastro Atualizado com Sucesso'
+      link: 'Clique no link abaixo para vizualizar suas informações'
+      button: 'Visualizar'
   number:
     currency:
       format:

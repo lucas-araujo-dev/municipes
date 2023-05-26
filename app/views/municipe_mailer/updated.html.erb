@@ -1,7 +1,7 @@
 <h1><%= @municipe.full_name %></h1>
 
-<p>Cadastro Atualizado com Sucesso</p>
+<p><%= t('mailers.municipe_mailer.updated') %></p>
 
-<p>Clique no link abaixo para vizualizar suas informações</p>
+<p><%= t('mailers.municipe_mailer.link') %></p>
 
-<p><%= link_to 'Visualizar seu perfil', edit_municipe_url(@municipe.id), class: "button" %></p>
+<p><%= link_to t('mailers.municipe_mailer.button'), edit_municipe_url(@municipe.id), class: "button" %></p>
