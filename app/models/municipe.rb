@@ -22,10 +22,16 @@ class Municipe < ApplicationRecord
   after_update :notify_updated
 
   def notify_welcome
+    sms_message = I18n.t('sms.messages.welcome')
+
     MunicipeMailer.welcome(self).deliver_later
+    SmsService.new(phone, sms_message).send_sms unless Rails.env.test?
   end
 
   def notify_updated
+    sms_message = I18n.t('sms.messages.updated')
+
     MunicipeMailer.updated(self).deliver_later
+    SmsService.new(phone, sms_message).send_sms unless Rails.env.test?
   end
 end
