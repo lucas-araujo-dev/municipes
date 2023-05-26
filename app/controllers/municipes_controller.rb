@@ -21,7 +21,9 @@ class MunicipesController < ApplicationController
 
     respond_to do |format|
       if @municipe.save
-        format.html { redirect_to municipes_url, notice: :created }
+        format.html do
+          redirect_to municipes_url, notice: t('resources.messages.created', resource: Municipe.model_name.human)
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -31,7 +33,9 @@ class MunicipesController < ApplicationController
   def update
     respond_to do |format|
       if @municipe.update(municipe_params)
-        format.html { redirect_to municipes_url, notice: :updated }
+        format.html do
+          redirect_to municipes_url, notice: t('resources.messages.updated', resource: Municipe.model_name.human)
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
       end

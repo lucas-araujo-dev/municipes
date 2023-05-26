@@ -242,4 +242,14 @@ pt-BR:
     edit: 'Editar %{model}'
     new: 'Novo %{model}'
     back: 'Voltar para %{model}'
+  resources:
+    status:
+      all: 'Todos'
+    messages:
+      created: '%{resource} criado com sucesso'
+      updated: '%{resource} atualizado com sucesso'
+      destroyed: '%{resource} excluído com sucesso'
+      canceled: '%{resource} cancelado com sucesso'
+      cannot_be_canceled: '%{resource} não pode ser cancelado'
+      cannot_be_updated: '%{resource} não pode ser atualizado'
 
