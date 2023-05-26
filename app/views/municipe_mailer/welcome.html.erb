@@ -1,0 +1,9 @@
+<h1><%= @municipe.full_name %></h1>
+
+<p>Cadastro Realizado com Sucesso</p>
+
+<p>Seja bem-vindo(a).</p>
+
+<p>Clique no link abaixo para vizualizar suas informações</p>
+
+<p><%= link_to 'Visualizar seu perfil', edit_municipe_url(@municipe.id), class: "button" %></p>

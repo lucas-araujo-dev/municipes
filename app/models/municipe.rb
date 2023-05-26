@@ -17,4 +17,15 @@ class Municipe < ApplicationRecord
   validates :phone, format: { with: /\A\+55\s\(\d{2}\)\s\d{5}-\d{4}\z/ }
   validates :birthdate, date: { before_or_equal_to: proc { Time.zone.now }, message: :invalid }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  after_create :notify_welcome
+  after_update :notify_updated
+
+  def notify_welcome
+    MunicipeMailer.welcome(self).deliver_later
+  end
+
+  def notify_updated
+    MunicipeMailer.updated(self).deliver_later
+  end
 end
