@@ -6,7 +6,7 @@ FactoryBot.define do
     neighborhood { Faker::Address.community }
     city { Faker::Address.city }
     uf { Faker::Address.state }
-    zipcode { Faker::Address.zip_code }
+    zipcode { '64010-555' }
     complement { Faker::Address.secondary_address }
     ibge_code { Faker::Number.number(digits: 7) }
     association :municipe, factory: :municipe

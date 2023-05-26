@@ -17,7 +17,6 @@ RSpec.describe Municipe, type: :model do
     it { is_expected.to validate_uniqueness_of(:cns).case_insensitive }
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
     it { is_expected.to validate_length_of(:full_name).is_at_most(255) }
-    it { is_expected.to validate_length_of(:phone).is_at_most(15) }
     it { is_expected.to validate_length_of(:email).is_at_most(255) }
     it { is_expected.to validate_cns(:cns) }
     it { is_expected.to require_a_valid_cpf(:cpf) }
@@ -27,6 +26,23 @@ RSpec.describe Municipe, type: :model do
       expect(municipe).to be_valid
       municipe.birthdate = 1.day.from_now
       expect(municipe).not_to be_valid
+    end
+  end
+
+  describe 'validate formats' do
+    context 'with valid formats' do
+      it { is_expected.to allow_value(municipe.cpf).for(:cpf) }
+      it { is_expected.to allow_value(municipe.phone).for(:phone) }
+    end
+
+    context 'with invalid formats' do
+      before do
+        municipe.cpf = '12345678910'
+        municipe.phone = '12345678910'
+      end
+
+      it { is_expected.not_to allow_value(municipe.cpf).for(:cpf) }
+      it { is_expected.not_to allow_value(municipe.phone).for(:phone) }
     end
   end
 

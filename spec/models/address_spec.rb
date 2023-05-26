@@ -16,4 +16,18 @@ RSpec.describe Address, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:municipe) }
   end
+
+  describe 'validate formats' do
+    context 'with valid formats' do
+      it { is_expected.to allow_value(address.zipcode).for(:zipcode) }
+    end
+
+    context 'with invalid formats' do
+      before do
+        address.zipcode = '12345678910'
+      end
+
+      it { is_expected.not_to allow_value(address.zipcode).for(:zipcode) }
+    end
+  end
 end

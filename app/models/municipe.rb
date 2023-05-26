@@ -11,10 +11,10 @@ class Municipe < ApplicationRecord
 
   validates :full_name, :cpf, :cns, :email, :birthdate, :phone, :picture, presence: true
   validates :cpf, :cns, :email, uniqueness: { case_sensitive: false }
-  validates :cpf, cpf: true
+  validates :cpf, cpf: true, format: { with: /\A\d{3}\.\d{3}\.\d{3}-\d{2}\z/ }
   validates :cns, '::CnsBrazil::Cns': true
   validates :full_name, :email, length: { maximum: 255 }
-  validates :phone, length: { maximum: 15 }
+  validates :phone, format: { with: /\A\+55\s\(\d{2}\)\s\d{5}-\d{4}\z/ }
   validates :birthdate, date: { before_or_equal_to: proc { Time.zone.now }, message: :invalid }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 end
