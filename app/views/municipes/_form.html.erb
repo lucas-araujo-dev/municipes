@@ -11,59 +11,63 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :full_name %>
-    <%= form.text_field :full_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <div id="municipe-form" data-controller="municipe-form">
+    <div class="my-5">
+      <%= form.label :full_name %>
+      <%= form.text_field :full_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
 
-  <div class="my-5">
-    <div class="flex justify-between">
-      <div class="w-1/3">
-        <%= form.label :cpf %>
-        <%= form.text_field :cpf, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-      </div>
+    <div class="my-5">
+      <div class="flex justify-between">
+        <div class="w-1/3">
+          <%= form.label :cpf %>
+          <%= form.text_field :cpf, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",
+                              data: { "municipe-form-target": "cpf" } %>
+        </div>
 
-      <div class="w-1/3 px-2">
-        <%= form.label :cns %>
-        <%= form.text_field :cns, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-      </div>
+        <div class="w-1/3 px-2">
+          <%= form.label :cns %>
+          <%= form.text_field :cns, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
 
-      <div class="w-1/3">
-        <%= form.label :birthdate %>
-        <%= form.date_field :birthdate, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        <div class="w-1/3">
+          <%= form.label :birthdate %>
+          <%= form.date_field :birthdate, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="my-5">
-    <%= form.label :picture %>
-    <%= form.file_field :picture, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+    <div class="my-5">
+      <%= form.label :picture %>
+      <%= form.file_field :picture, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
 
-  <div class="my-5">
-    <div class="flex justify-between">
-      <div class="w-1/3">
-        <%= form.label :phone %>
-        <%= form.text_field :phone, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-      </div>
+    <div class="my-5">
+      <div class="flex justify-between">
+        <div class="w-1/3">
+          <%= form.label :phone %>
+          <%= form.text_field :phone, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",
+                              data: { "municipe-form-target": 'phone' } %>
+        </div>
 
-      <div class="w-1/3 px-2">
-        <%= form.label :email %>
-        <%= form.email_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-      </div>
+        <div class="w-1/3 px-2">
+          <%= form.label :email %>
+          <%= form.email_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
 
-      <div class="w-1/3">
-        <%= form.label :status %>
-        <%= form.select :status, options_for_select(t('activerecord.municipe.status').map { |i| [i.last, i.first] }, form.object.status),
-                        { include_blank: true }, class: 'form-select block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
+        <div class="w-1/3">
+          <%= form.label :status %>
+          <%= form.select :status, options_for_select(t('activerecord.municipe.status').map { |i| [i.last, i.first] }, form.object.status),
+                          { include_blank: true }, class: 'form-select block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="my-5">
-    <%= form.fields_for :address, form.object.address do |address_form| %>
-      <%= render 'address', form: address_form %>
-    <% end %>
+    <div class="my-5">
+      <%= form.fields_for :address, form.object.address do |address_form| %>
+        <%= render 'address', form: address_form %>
+      <% end %>
+    </div>
   </div>
 
   <div class="inline">
