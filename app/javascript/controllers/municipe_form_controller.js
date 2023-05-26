@@ -1,9 +1,9 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-    static targets = ["zipcode", "street", "neighborhood", "city", "uf"];
+    static targets = ["zipcode", "street", "neighborhood", "city", "uf", "cpf", "phone"];
     connect() {
-        console.log("ZipCode Autocomplete Controller connected");
+        this.setupMask();
     }
 
     onZipCodeChange() {
@@ -23,5 +23,11 @@ export default class extends Controller {
                     console.error("Failed to fetch zip code data", error);
                 });
         }
+    }
+
+    setupMask() {
+        $(this.cpfTarget).mask("000.000.000-00");
+        $(this.phoneTarget).mask("+00 (00) 00000-0000");
+        $(this.zipcodeTarget).mask("00000-000");
     }
 }
