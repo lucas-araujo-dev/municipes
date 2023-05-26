@@ -1,0 +1,7 @@
+<h1><%= @municipe.full_name %></h1>
+
+<p><%= t('mailers.municipe_mailer.updated') %></p>
+
+<p><%= t('mailers.municipe_mailer.link') %></p>
+
+<p><%= link_to t('mailers.municipe_mailer.button'), edit_municipe_url(@municipe.id), class: "button" %></p>
