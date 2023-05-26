@@ -12,6 +12,12 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
+  mailcatcher:
+    image: yappabe/mailcatcher
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+
   app:
     container_name: app
     build:
@@ -28,6 +34,8 @@ services:
       RAILS_ENV: development
     restart: always
     entrypoint: ./entrypoints/docker-entrypoint.sh
+    links:
+      - mailcatcher
 
 volumes:
   postgres-data:

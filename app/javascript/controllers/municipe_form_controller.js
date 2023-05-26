@@ -10,8 +10,11 @@ export default class extends Controller {
         const zipCode = event.target.value;
 
 
-        if (zipCode.length === 8) {
-            fetch(`https://viacep.com.br/ws/${zipCode}/json/`)
+
+        if (zipCode.length === 9) {
+            let param = zipCode.replace("-", "");
+
+            fetch(`https://viacep.com.br/ws/${param}/json/`)
                 .then(response => response.json())
                 .then(data => {
                     this.streetTarget.value = data.logradouro;
