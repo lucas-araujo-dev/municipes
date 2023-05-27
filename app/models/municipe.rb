@@ -32,10 +32,9 @@ class Municipe < ApplicationRecord
     end
   end
 
-
-  #exclui o campo picture para nao ser indexado
-  def as_indexed_json(options={})
-    self.as_json(
+  # exclui o campo picture para nao ser indexado
+  def as_indexed_json(_options = {})
+    as_json(
       except: [:picture]
     )
   end
