@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Municipe < ApplicationRecord
+  include Searchable
+
   enum status: { active: 'active', inactive: 'inactive' }
 
   has_one :address, dependent: :destroy, inverse_of: :municipe
@@ -20,6 +22,23 @@ class Municipe < ApplicationRecord
 
   after_create :notify_welcome
   after_update :notify_updated
+
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'false' do
+      indexes :full_name, type: :text
+      indexes :cpf, type: :text
+      indexes :cns, type: :text
+      indexes :email, type: :text
+    end
+  end
+
+
+  #exclui o campo picture para nao ser indexado
+  def as_indexed_json(options={})
+    self.as_json(
+      except: [:picture]
+    )
+  end
 
   def notify_welcome
     sms_message = I18n.t('sms.messages.welcome')

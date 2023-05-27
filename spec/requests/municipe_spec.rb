@@ -37,7 +37,6 @@ RSpec.describe 'Municipes', type: :request do
       end
 
       it 'redirects to the created municipe' do
-        p valid_attributes
         post municipes_url, params: { municipe: valid_attributes }
         expect(response).to redirect_to(municipes_url)
       end
