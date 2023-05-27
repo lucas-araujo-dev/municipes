@@ -51,14 +51,19 @@ gem 'validates_cpf'
 
 gem 'date_validator'
 
+gem 'faraday'
+
 gem 'cns_brazil'
 
 gem 'twilio-ruby'
 
+gem 'elasticsearch'
 gem 'elasticsearch-model', git: 'https://github.com/elastic/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'https://github.com/elastic/elasticsearch-rails.git'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'byebug'
   gem 'cpf_faker'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
