@@ -35,3 +35,6 @@
 
 # Ignore env file
 .env
+
+# Ignore byebug
+.byebug_history
