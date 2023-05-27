@@ -17,7 +17,6 @@ class SmsService
       to: @number,
       body: @message
     )
-
   rescue Twilio::REST::RestError => e
     Rails.logger.error e.message
   end
