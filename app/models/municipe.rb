@@ -20,8 +20,8 @@ class Municipe < ApplicationRecord
   validates :birthdate, date: { before_or_equal_to: proc { Time.zone.now }, message: :invalid }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  after_create :notify_welcome
-  after_update :notify_updated
+  after_commit :notify_welcome, on: :create
+  after_commit :notify_updated, on: :update
 
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
