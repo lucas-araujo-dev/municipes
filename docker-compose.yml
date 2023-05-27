@@ -21,6 +21,12 @@ services:
     ports:
       - 9200:9200
 
+  mailcatcher:
+    image: yappabe/mailcatcher
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+
   app:
     container_name: app
     build:
@@ -39,6 +45,8 @@ services:
       ELASTICSEARCH_URL: http://elasticsearch:9200
     restart: always
     entrypoint: ./entrypoints/docker-entrypoint.sh
+    links:
+      - mailcatcher
 
 volumes:
   postgres-data:

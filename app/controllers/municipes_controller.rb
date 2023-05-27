@@ -13,16 +13,21 @@ class MunicipesController < ApplicationController
 
   def new
     @municipe = Municipe.new
+    @municipe.build_address
   end
 
-  def edit; end
+  def edit
+    @municipe.build_address unless @municipe.address
+  end
 
   def create
     @municipe = Municipe.new(municipe_params)
 
     respond_to do |format|
       if @municipe.save
-        format.html { redirect_to municipes_url, notice: :created }
+        format.html do
+          redirect_to municipes_url, notice: t('resources.messages.created', resource: Municipe.model_name.human)
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -32,7 +37,9 @@ class MunicipesController < ApplicationController
   def update
     respond_to do |format|
       if @municipe.update(municipe_params)
-        format.html { redirect_to municipes_url, notice: :updated }
+        format.html do
+          redirect_to municipes_url, notice: t('resources.messages.updated', resource: Municipe.model_name.human)
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -46,6 +53,7 @@ class MunicipesController < ApplicationController
   end
 
   def municipe_params
-    params.require(:municipe).permit(:full_name, :cpf, :cns, :email, :birthdate, :phone, :picture, :status)
+    params.require(:municipe).permit(:full_name, :cpf, :cns, :email, :birthdate, :phone, :picture, :status,
+      address_attributes: %i[street zipcode complement neighborhood city uf ibge_code])
   end
 end
